@@ -17,3 +17,8 @@ arr2.reverse(); //b, a
 //concat / spread(...)
 const letter = arr.concat(arr2);
 console.log(letter); //1,2,3,4,5,b,a
+
+//the new at method
+const arr3 = [23, 11, 64];
+arr3.at(-1); // 64 way1
+console.log(arr3[-1]); //undefined way2
