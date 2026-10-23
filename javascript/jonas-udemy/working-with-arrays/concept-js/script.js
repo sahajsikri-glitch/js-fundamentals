@@ -22,3 +22,23 @@ console.log(letter); //1,2,3,4,5,b,a
 const arr3 = [23, 11, 64];
 arr3.at(-1); // 64 way1
 console.log(arr3[-1]); //undefined way2
+
+// Looping-arrays : forEach
+//normal way -> always first index then mov in entries()
+const movements = [100, -200, 400, -600];
+for (const [i, mov] of movements.entries()) {
+  if (mov > 0) {
+    console.log(`${i} deposit ${mov}`);
+  } else {
+    console.log(`${i} withdraw ${mov}`);
+  }
+}
+//for-each way -> it will callback function many times
+// order -> always first elements then index in function arguments
+movements.forEach(function (mov, i) {
+  if (mov > 0) {
+    console.log(`${i} deposit ${mov}`);
+  } else {
+    console.log(`${i} withdraw ${mov}`);
+  }
+});
