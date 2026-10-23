@@ -42,3 +42,17 @@ movements.forEach(function (mov, i) {
     console.log(`${i} withdraw ${mov}`);
   }
 });
+
+//forEach with maps and sets
+//NOTE : for each always takes first parameter as value then second at index
+const currencies = new Map([
+  ["USD", "United States dollar"],
+  ["EUR", "Euro"],
+  ["GBP", "Pounding sterling"],
+]);
+currencies.forEach(function (value, key, map) {
+  console.log(`${key} : ${value}`);
+  //"USD", "United States dollar"
+  // "EUR", "Euro"
+  // "GBP", "Pounding sterling"
+});
