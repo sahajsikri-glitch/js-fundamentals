@@ -124,16 +124,16 @@ const students = [
   { name: "Arman", marks: 91 },
 ];
 
-const processStudents = function (studentsArr, callback) {
-  for (const student of studentsArr) {
-    callback(student);
-  }
-};
+// const processStudents = function (studentsArr, callback) {
+//   for (const student of studentsArr) {
+//     callback(student);
+//   }
+// };
 
-const printToppers = function (student) {
-  if (student.marks > 80) {
-    console.log(`${student.name} is a topper`);
-  }
-};
+// const printToppers = function (student) {
+//   if (student.marks > 80) {
+//     console.log(`${student.name} is a topper`);
+//   }
+// };
 
-processStudents(students, printToppers);
+// processStudents(students, printToppers);
