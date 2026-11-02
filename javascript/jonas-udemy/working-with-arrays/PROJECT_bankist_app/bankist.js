@@ -55,6 +55,7 @@ const inputClosePin = document.querySelector(".form__input--pin");
 
 // Creating DOM elements :
 const displayMov = function (movements) {
+  containerMovements.innerHTML = "";
   movements.forEach(function (mov, i) {
     // veryyrey IMPORTANT//
     const type = mov > 0 ? "deposit" : "withdrawl";
