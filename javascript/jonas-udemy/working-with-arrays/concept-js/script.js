@@ -56,3 +56,29 @@ currencies.forEach(function (value, key, map) {
   // "EUR", "Euro"
   // "GBP", "Pounding sterling"
 });
+
+// The Map Method
+const eurToUsd = 1.1;
+// Way-1 ->using map method
+// map method(call-back function) returns new array
+const movmentsUsd = movements.map(function (mov) {
+  return mov * eurToUsd;
+});
+console.log(movements);
+console.log(eurToUsd);
+// way-02 ->using loops
+const movementsUsdfor = [];
+for (const mov of movements) {
+  movementsUsdfor.push(mov * eurToUsd);
+}
+console.log(movementsUsdfor);
+
+// eg-02
+const movDescriptionn = movements.map(function (mov, i, arr) {
+  if (mov > 0) {
+    return `${i + 1} deposit ${mov}`;
+  } else {
+    return `${i + 1} withdraw ${Math.abs(mov)}`;
+  }
+});
+console.log(movDescriptionn);
