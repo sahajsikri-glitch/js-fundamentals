@@ -82,3 +82,4 @@ const movDescriptionn = movements.map(function (mov, i, arr) {
   }
 });
 console.log(movDescriptionn);
+// DIFFERENCE B/W MAP & FOREACH -> map creates an array instead of just printing values like foreach

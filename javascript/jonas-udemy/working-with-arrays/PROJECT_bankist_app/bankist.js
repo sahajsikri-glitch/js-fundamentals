@@ -69,3 +69,30 @@ const displayMov = function (movements) {
   });
 };
 displayMov(account1.movements);
+
+// Computing Usernames
+// eg-01
+const createUserName = function (user) {
+  (user
+    .toLowerCase()
+    .split(" ")
+    .map(function (word) {
+      return word[0];
+    }),
+    join(""));
+};
+createUserName("Jonas Schmedtmann");
+// eg-02
+const createUserName2 = function (accs) {
+  accs.forEach(function (acc) {
+    ((acc.username = acc.owner
+      .toLowerCase()
+      .split(" ")
+      .map(function (word) {
+        return word[0];
+      })),
+      join(""));
+  });
+};
+createUserName2(accounts);
+console.log(accounts);
