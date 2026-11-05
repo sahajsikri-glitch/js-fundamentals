@@ -83,3 +83,22 @@ const movDescriptionn = movements.map(function (mov, i, arr) {
 });
 console.log(movDescriptionn);
 // DIFFERENCE B/W MAP & FOREACH -> map creates an array instead of just printing values like foreach
+
+// the Filter-Method ->filter-out with condition
+// way-01
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(movements);
+console.log(deposits);
+// way-2
+const depositsFor = [];
+for (const mov of movements) {
+  if (mov > 0) {
+    depositsFor.push(mov);
+  }
+}
+// WHATS THE DIFFERENCE? WHY PREFER FILETER OR MAP METHOD OVER FOR LOOPS??
+// coz of only one reason that with these methods we can do chaining like we did earlier in meap method
+// look at it in concept-js/Script.js
+const withraw = movements.filter((mov) => mov < 0);

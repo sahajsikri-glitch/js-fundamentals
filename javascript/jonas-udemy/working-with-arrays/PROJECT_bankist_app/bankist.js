@@ -96,23 +96,3 @@ const createUserName2 = function (accs) {
 };
 createUserName2(accounts);
 console.log(accounts);
-
-// the Filter-Method ->filter-out with condition
-// way-01
-const movements = [100, -200, 400, -600];
-const deposits = movements.filter(function (mov) {
-  return mov > 0;
-});
-console.log(movements);
-console.log(deposits);
-// way-2
-const depositsFor = [];
-for (const mov of movements) {
-  if (mov > 0) {
-    depositsFor.push(mov);
-  }
-}
-// WHATS THE DIFFERENCE? WHY PREFER FILETER OR MAP METHOD OVER FOR LOOPS??
-// coz of only one reason that with these methods we can do chaining like we did earlier in meap method
-// look at it in concept-js/Script.js
-const withraw = movements.filter((mov) => mov < 0);
