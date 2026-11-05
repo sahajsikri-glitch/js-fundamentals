@@ -102,3 +102,34 @@ for (const mov of movements) {
 // coz of only one reason that with these methods we can do chaining like we did earlier in meap method
 // look at it in concept-js/Script.js
 const withraw = movements.filter((mov) => mov < 0);
+
+// the Reduce-Method :
+// its like a commulative sum / SNOWBALL
+// way-01
+const balance = movements.reduce(function (acc, mov, i, arr) {
+  console.log(`${i + 1} : ${acc} , ${mov}`);
+  return acc + mov;
+}, 0); // this 0 is initializing accumilator value to 0
+
+// way-02
+let balance2 = 0;
+for (const mov of movements) {
+  balance2 += mov;
+}
+console.log(balance2);
+
+// maximum value :
+// CONCEPT -> its like recurrsion it returns value at each iteration like which one WINS in this case
+// and at the end whos the winner is our answer
+const findMax = function (movements) {
+  const maximum = movements.reduce((acc, mov) => {
+    if (acc > mov) {
+      return acc;
+    } else {
+      return mov;
+    }
+  }, movements[0]);
+
+  return maximum;
+};
+findMax(movements);

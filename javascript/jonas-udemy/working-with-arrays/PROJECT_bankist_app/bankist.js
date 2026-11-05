@@ -28,6 +28,8 @@ const account4 = {
 const accounts = [account1, account2, account3, account4];
 
 // Elements :
+// label is all the things where we simply want to put some text in future
+//  as per the user which is mutable or somethin like that
 const labelWelcome = document.querySelector(".welcome");
 const labelDate = document.querySelector(".date");
 const labelBalance = document.querySelector(".balance__value");
@@ -96,3 +98,9 @@ const createUserName2 = function (accs) {
 };
 createUserName2(accounts);
 console.log(accounts);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
