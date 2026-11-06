@@ -20,43 +20,15 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
-
-// we return in map NO CONSOLE.LOG ITS NOT FOREACH
-calcAverageHumanAge = function (agesArr) {
-  const humanAge = agesArr
-    .map(function (dog) {
-      if (dog <= 2) {
-        return dog * 2;
-      } else {
-        return 16 + dog * 4;
-      }
-    })
-    .filter(function (dogAge) {
-      return dogAge >= 18;
-    })
-    .reduce(function (acc, curr, idx, arr) {
-      return acc + curr / arr.length;
-    }, 0);
-  return humanAge;
-};
-console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
-console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
-
-//  way-02 :
 const calcAverageHumanAge = function (ages) {
-  const humanAges = ages.map((age) => (age <= 2 ? 2 * age : 16 + age * 4));
-
-  const adults = humanAges.filter((age) => age >= 18);
-
-  console.log(humanAges);
-  console.log(adults);
-
-  const average = adults.reduce(
-    // op way -> NEW CONCEPT
-    (acc, age, i, arr) => acc + age / arr.length,
+  const humanAges = ages.map((dogAge) =>
+    dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4,
+  );
+  const oldHumanAge = humanAges.filter((dogAge) => dogAge >= 18);
+  const average = oldHumanAge.reduce(
+    (acc, curr) => acc + curr / oldHumanAge.length,
     0,
   );
-
   // 2 3. (2+3)/2 = 2.5 === 2/2+3/2 = 2.5
 
   return average;
