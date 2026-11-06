@@ -133,3 +133,25 @@ const findMax = function (movements) {
   return maximum;
 };
 findMax(movements);
+
+// the magic of chaining :
+// PIPELINE
+// eg-01
+const eurotoUsd = 1.1;
+const totalDeposits = movements
+  .filter((mov) => mov > 0)
+  .map((mov) => mov * eurToUsd)
+  .reduce((acc, curr) => acc + curr, 0);
+
+console.log(totalDeposits);
+
+//  here HOW TO CHECK the output of the preivous one in chaining ?
+// ANS -> BY PASSING arr AS PARAMETER
+// eg-02
+const totalDeposits2 = movements
+  .filter((mov) => mov > 0)
+  // here whatever's the array given by filter method will be shown in ,map parameter :
+  .map((mov, arr) => console.log(arr))
+  .reduce((acc, curr) => acc + curr, 0);
+
+console.log(totalDeposits2);
