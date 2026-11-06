@@ -104,3 +104,26 @@ const calcDisplayBalance = function (movements) {
   labelBalance.textContent = `${balance} EUR`;
 };
 calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter((mov) => mov >= 0)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  labelSumIn.textContent = `${incomes} 💶`;
+
+  const out = movements
+    .filter((mov) => mov < 0)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  labelSumOut.textContent = `${Math.abs(out)} 💶`;
+
+  const interest = movements
+    .filter((mov) => mov >= 0)
+    .map((mov) => (mov * 1.2) / 100)
+    .filter((int) => int > 1)
+    .reduce((acc, curr) => curr + acc, 0);
+
+  labelSumInterest.textContent = `${interest} 💶`;
+};
+calcDisplaySummary(account1.movements);
