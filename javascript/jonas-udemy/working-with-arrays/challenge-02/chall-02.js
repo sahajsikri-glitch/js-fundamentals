@@ -52,6 +52,7 @@ const calcAverageHumanAge = function (ages) {
   console.log(adults);
 
   const average = adults.reduce(
+    // op way -> NEW CONCEPT
     (acc, age, i, arr) => acc + age / arr.length,
     0,
   );
