@@ -84,20 +84,20 @@ const createUserName = function (user) {
     join(""));
 };
 createUserName("Jonas Schmedtmann");
-// eg-02
-const createUserName2 = function (accs) {
-  accs.forEach(function (acc) {
-    ((acc.username = acc.owner
-      .toLowerCase()
-      .split(" ")
-      .map(function (word) {
-        return word[0];
-      })),
-      join(""));
-  });
-};
-createUserName2(accounts);
-console.log(accounts);
+// // eg-02
+// const createUserName2 = function (accs) {
+//   accs.forEach(function (acc) {
+//     ((acc.username = acc.owner
+//       .toLowerCase()
+//       .split(" ")
+//       .map(function (word) {
+//         return word[0];
+//       })),
+//       join(""));
+//   });
+// };
+// createUserName2(accounts);
+// console.log(accounts);
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
@@ -105,33 +105,65 @@ const calcDisplayBalance = function (movements) {
 };
 calcDisplayBalance(account1.movements);
 
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
     .filter((mov) => mov >= 0)
     .reduce((acc, curr) => acc + curr, 0);
 
   labelSumIn.textContent = `${incomes} 💶`;
 
-  const out = movements
+  const out = acc.movements
     .filter((mov) => mov < 0)
     .reduce((acc, curr) => acc + curr, 0);
 
   labelSumOut.textContent = `${Math.abs(out)} 💶`;
 
-  const interest = movements
+  const interest = acc.movements
     .filter((mov) => mov >= 0)
-    .map((mov) => (mov * 1.2) / 100)
+    .map((mov) => (mov * acc.interest) / 100)
     .filter((int) => int > 1)
     .reduce((acc, curr) => curr + acc, 0);
 
   labelSumInterest.textContent = `${interest} 💶`;
 };
-calcDisplaySummary(account1.movements);
 
-// way-01
-const acc = accounts.find((acc) => acc.owner == "Parul Sikri");
-console.log(acc);
-// way-02
-for (const acc of accounts) {
-  return acc.owner == "Parul Sikri";
-}
+// // way-01
+// const acc = accounts.find((acc) => acc.owner == "Parul Sikri");
+// console.log(acc);
+// // way-02
+// for (const acc of accounts) {
+//   return acc.owner == "Parul Sikri";
+// }
+
+// implementing login
+// Event Handler :
+let currAccount;
+btnLogin.addEventListener("click", function (event) {
+  // it'll not log into console because of the <form><form/> we used
+  // in html in btnLogin elemnt ->it'll submit it right away
+  // SO WE USE preventDefault TO PREVENT IT FROM SUBMISSION
+  event.preventDefault();
+
+  currAccount = accounts.find((acc) => acc.user === inputLoginUsername.value);
+  console.log(currAccount);
+
+  // using null-chaining operator coz what if invalid pin?
+  if (currAccount?.pin == Number(inputLoginPin.value)) {
+    // now refer flow chart what to do?
+    // Display UI
+    labelWelcome.textContent = "Welcome Back";
+
+    containerApp.style.opacity = 100; //doubt in this line
+
+    // clearing input field one's user logged in
+    inputLoginPin = inputLoginUsername = " ";
+    inputLoginPin.blur();
+    // display balance
+    calcDisplayBalance(currAccount.movements);
+    //display summary
+    calcDisplaySummary(currAccount);
+    // display movements
+    displayMov(currAccount.movements);
+  }
+});
+// imp -> in next class check if everything's working -> ASK GPT
