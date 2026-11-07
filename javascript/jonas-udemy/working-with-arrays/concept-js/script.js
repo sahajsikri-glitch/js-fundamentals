@@ -155,3 +155,7 @@ const totalDeposits2 = movements
   .reduce((acc, curr) => acc + curr, 0);
 
 console.log(totalDeposits2);
+
+// the find-method : -> returns first element that satisfies the condition
+const firstWithdrawl = movements.find((mov) => mov < 0);
+console.log(firstWithdrawl);

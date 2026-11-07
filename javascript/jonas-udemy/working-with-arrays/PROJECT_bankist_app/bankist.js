@@ -127,3 +127,11 @@ const calcDisplaySummary = function (movements) {
   labelSumInterest.textContent = `${interest} 💶`;
 };
 calcDisplaySummary(account1.movements);
+
+// way-01
+const acc = accounts.find((acc) => acc.owner == "Parul Sikri");
+console.log(acc);
+// way-02
+for (const acc of accounts) {
+  return acc.owner == "Parul Sikri";
+}
