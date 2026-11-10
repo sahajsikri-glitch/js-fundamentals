@@ -160,7 +160,7 @@ btnLogin.addEventListener("click", function (event) {
     inputLoginPin = inputLoginUsername = " ";
     inputLoginPin.blur();
     // display balance
-    calcDisplayBalance(currAccount.movements);
+    calcDisplayBalance(currAccount);
     //display summary
     calcDisplaySummary(currAccount);
     // display movements
@@ -177,6 +177,8 @@ btnTransfer.addEventListener("click", function (event) {
     (acc) => acc.username === inputTransferTo.value,
   );
 
+  inputTransferAmount = inputTransferTo = ""; // imp fuddu line
+
   if (
     amount > 0 &&
     recAacc &&
@@ -190,4 +192,12 @@ btnTransfer.addEventListener("click", function (event) {
   } else {
     console.log("Invalid transaction");
   }
+  // Update-UI : after transaction completion :
+  // combining all that functions inyto 1 :
+  // display balance
+  calcDisplayBalance(currAccount);
+  //display summary
+  calcDisplaySummary(currAccount);
+  // display movements
+  displayMov(currAccount.movements);
 });
