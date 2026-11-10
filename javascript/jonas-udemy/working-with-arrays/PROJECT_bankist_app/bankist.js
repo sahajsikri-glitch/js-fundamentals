@@ -99,11 +99,12 @@ createUserName("Jonas Schmedtmann");
 // createUserName2(accounts);
 // console.log(accounts);
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+const calcDisplayBalance = function (account) {
+  const balance = account.movements.reduce((acc, mov) => acc + mov, 0);
+  account.balance = balance;
   labelBalance.textContent = `${balance} EUR`;
 };
-calcDisplayBalance(account1.movements);
+calcDisplayBalance(account1);
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
@@ -167,3 +168,26 @@ btnLogin.addEventListener("click", function (event) {
   }
 });
 // imp -> in next class check if everything's working -> ASK GPT
+
+// Implementing Transfers
+btnTransfer.addEventListener("click", function (event) {
+  event.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const recAacc = accounts.find(
+    (acc) => acc.username === inputTransferTo.value,
+  );
+
+  if (
+    amount > 0 &&
+    recAacc &&
+    currAccount.balance >= amount &&
+    recAacc.username !== currAccount.username
+  ) {
+    // Doing the transfer :
+    console.log("Valid transaction");
+    currAccount.movements.push(-amount);
+    recAacc.movements.push(amount);
+  } else {
+    console.log("Invalid transaction");
+  }
+});
