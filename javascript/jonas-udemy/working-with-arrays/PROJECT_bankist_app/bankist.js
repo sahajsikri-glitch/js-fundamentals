@@ -171,8 +171,9 @@ btnLogin.addEventListener("click", function (event) {
 
 // Implementing Transfers
 btnTransfer.addEventListener("click", function (event) {
-  event.preventDefault();
-  const amount = Number(inputTransferAmount.value);
+  event.preventDefault(); // because btntransfer was in form .
+  const amount = Number(inputTransferAmount.value); //remember to always convert input value to number
+  // coz we know input default it take is in STRING .
   const recAacc = accounts.find(
     (acc) => acc.username === inputTransferTo.value,
   );

@@ -92,3 +92,101 @@ const checkMovements = function (movs) {
 };
 
 checkMovements(movements);
+
+//Implementing Transfers :
+// [Task-A] -> Basics
+
+// 1. Create an array of account objects. Each object should have username and balance.
+// Use .find() to get the account whose username is "sahaj" and print its balance.
+const account1 = {
+  username: "Sahaj",
+  balance: 19000,
+};
+const account2 = {
+  username: "Parul",
+  balance: 188088,
+};
+const accounts = [account1, account2];
+const acc = accounts.find(function (accnt) {
+  if (accnt.username === "Sahaj") {
+    acc.balance = accnt.balance;
+  }
+});
+//2.Write a function that receives an amount and an account. It should return true only if
+//  the amount is greater than 0 and the account balance is sufficient. Otherwise return false.
+const validTrans = function (amount, account) {
+  amount > 0 && account.balance >= amount ? true : false;
+};
+validTrans(2000, account2);
+//3.You have a movements array. Write code that adds a new withdrawal of 500 at the end using push(),
+//  then immediately prints the last movement using .at().
+const movements = [100, 21092, -9292, 110];
+const newWithdrawl = function (amount) {
+  movements.push(-amount);
+  console.log(movements.at(-1));
+};
+//4.Create two account objects. Write a condition that checks:
+// Amount is positive
+// Receiver account exists
+// Sender has enough balance
+// Sender and receiver are not the same person
+const validAccounts = function (amount, senderacc, recacc) {
+  const sendersAcc = senderacc.username;
+  const receiversAcc = recacc.username;
+  if (
+    amount > 0 &&
+    senderacc.balance >= receiversAcc?.balance &&
+    receiversAcc != sendersAcc
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+//5.Explain what event.preventDefault() does and why we use it on a form button click.
+//  Then write a small example of it.
+
+// --> event.preventDefault() is a JavaScript method that stops the browser's default behaviour for an event.
+
+// --> But sometimes, we don't want the browser to do these things automatically.
+//  We want JavaScript to handle the form submission ourselves.
+
+// --> Why do we use it with forms?
+// Imagine you have a login form.
+
+// When someone clicks the Submit button:
+// 1. The browser automatically tries to submit the form.
+// 2. The page reloads.
+// 3. Any JavaScript state or data that hasn't been saved may be lost.
+// But suppose you want to:
+// - Validate the email and password.
+// - Check whether the fields are empty.
+// - Display a success message without reloading the page.
+
+// EXAMPLE :
+// <!DOCTYPE html>
+// <html>
+// <body>
+
+//   <form id="myForm">
+//     <input type="text" id="username" placeholder="Enter name">
+
+//     <button type="submit">Submit</button>
+//   </form>
+
+//   <script>
+//     const form = document.getElementById("myForm");
+
+//     form.addEventListener("submit", function(event) {
+
+//       event.preventDefault();
+
+//       const name = document.getElementById("username").value;
+
+//       console.log("Hello " + name);
+
+//     });
+//   </script>
+
+// </body>
+// </html>
