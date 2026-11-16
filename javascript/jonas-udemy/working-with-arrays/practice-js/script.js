@@ -95,7 +95,6 @@ checkMovements(movements);
 
 //Implementing Transfers :
 // [Task-A] -> Basics
-
 // 1. Create an array of account objects. Each object should have username and balance.
 // Use .find() to get the account whose username is "sahaj" and print its balance.
 const account1 = {
@@ -170,7 +169,6 @@ const validAccounts = function (amount, senderacc, recacc) {
 
 //   <form id="myForm">
 //     <input type="text" id="username" placeholder="Enter name">
-
 //     <button type="submit">Submit</button>
 //   </form>
 
@@ -178,15 +176,29 @@ const validAccounts = function (amount, senderacc, recacc) {
 //     const form = document.getElementById("myForm");
 
 //     form.addEventListener("submit", function(event) {
-
 //       event.preventDefault();
-
 //       const name = document.getElementById("username").value;
-
 //       console.log("Hello " + name);
-
 //     });
 //   </script>
 
 // </body>
 // </html>
+
+// [Task-B] -> Real-world
+// Task 1: Library Borrowing System
+// Write a function borrowBook(userName, bookId) that:
+// Finds the user and the book
+// Checks: user exists, book exists, book is available, user age ≥ 18, user has no fine
+// If everything is valid → mark book as not available + push book title into user’s borrowedBooks
+// Otherwise print a clear error message saying exactly what went wrong
+const books = [
+  { id: 101, title: "Atomic Habits", isAvailable: true },
+  { id: 102, title: "Deep Work", isAvailable: false },
+  { id: 103, title: "Rich Dad Poor Dad", isAvailable: true },
+];
+
+const users = [
+  { name: "Sahaj", age: 20, hasFine: false, borrowedBooks: [] },
+  { name: "Teju", age: 16, hasFine: true, borrowedBooks: [] },
+];

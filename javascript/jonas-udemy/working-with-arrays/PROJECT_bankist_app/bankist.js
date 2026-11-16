@@ -202,3 +202,25 @@ btnTransfer.addEventListener("click", function (event) {
   // display movements
   displayMov(currAccount.movements);
 });
+
+// The findIndex Method :
+btnClose.addEventListener("click", function (event) {
+  event.preventDefault();
+  console.log("Delete");
+  // delete user account:
+  if (
+    inputCloseUsername.value === currAccount.username &&
+    Number(inputClosePin.value) === currAccount.pin
+  ) {
+    // use FINDINDEX instead of INDEXOF
+    const index = accounts.findIndex(
+      (acc) => acc.username === currAccount.username,
+    );
+    console.log(index);
+    accounts.splice(index, 1);
+    // Hide UI / log him out :
+    containerApp.style.opacity = 0;
+
+    inputCloseUsername.value = inputClosePin.value = "";
+  }
+});
