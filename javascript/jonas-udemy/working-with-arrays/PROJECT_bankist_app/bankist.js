@@ -224,3 +224,18 @@ btnClose.addEventListener("click", function (event) {
     inputCloseUsername.value = inputClosePin.value = "";
   }
 });
+
+btnLoan.addEventListener("click", function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+  if (amount > 0 && currAccount.movements.some((mov) => mov >= 0.1 * mov)) {
+    // add +ve mov :
+    currAccount.movements.push(amount);
+    // uupdate UI
+    containerApp.style.opacity = 0;
+    inputLoanAmount.value = "";
+  }
+  else{
+    alert("NO LOAN GRANTED")
+  }
+});

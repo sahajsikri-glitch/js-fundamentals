@@ -172,3 +172,21 @@ const latestLargeMovementsIndex = movements.findLast(function (max) {
 console.log(
   `your last largest movement was ${movements.length - latestLargeMovementsIndex} ago`,
 );
+
+// Sum and the Every method :
+// if we use include stl function to check for EQUALITY : example -:
+movements.includes(-130);
+// SOME -> any satisfies?
+// now Some method ->used to check can apply CONDITION using it : example -:
+movements.some((mov) => mov === -130);
+movements.some((mov) => mov > 0);
+
+// EVERY -> all of them satisfies?
+console.log(movements.every((mov) => mov > 0));
+console.log(account3.movements.every((mov) => mov >= 0));
+
+// SEPERATE CALLBACK : coooolthingnngg -> function in method !!!
+const deposit = (mov) => mov < 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
