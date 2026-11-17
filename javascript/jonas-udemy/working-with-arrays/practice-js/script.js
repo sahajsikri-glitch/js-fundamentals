@@ -192,13 +192,128 @@ const validAccounts = function (amount, senderacc, recacc) {
 // Checks: user exists, book exists, book is available, user age ≥ 18, user has no fine
 // If everything is valid → mark book as not available + push book title into user’s borrowedBooks
 // Otherwise print a clear error message saying exactly what went wrong
-const books = [
-  { id: 101, title: "Atomic Habits", isAvailable: true },
-  { id: 102, title: "Deep Work", isAvailable: false },
-  { id: 103, title: "Rich Dad Poor Dad", isAvailable: true },
-];
+// const books = [
+//   { id: 101, title: "Atomic Habits", isAvailable: true },
+//   { id: 102, title: "Deep Work", isAvailable: false },
+//   { id: 103, title: "Rich Dad Poor Dad", isAvailable: true },
+// ];
 
-const users = [
-  { name: "Sahaj", age: 20, hasFine: false, borrowedBooks: [] },
-  { name: "Teju", age: 16, hasFine: true, borrowedBooks: [] },
+// const users = [
+//   { name: "Sahaj", age: 20, hasFine: false, borrowedBooks: [] },
+//   { name: "Teju", age: 16, hasFine: true, borrowedBooks: [] },
+// ];
+
+//1.findIndex & findLastIndex 2.some & every method
+
+// task-[A]->Basics
+//1.Create an array of numbers. Use .find() to get the first number that is divisible by both 3 and 5.
+//  If none exists, print a proper message.
+const numsrand = [300, 11, 129, 1290, 23, 222];
+const checkdivby3and5 = numsrand.find((mov) => mov % 3 == 0 && mov % 5 == 0);
+// use undefined instead of null
+checkdivby3and5 != undefined
+  ? checkdivby3and5
+  : "no number is divisible by them";
+// 2.From an array of temperatures, use .findLast() to get the last temperature that was above 40°C.
+const temp = [21.9, 33.2, 83.1, 90, 100.2];
+const lastHighTemp = temp.findLast((temp) => temp > 40);
+console.log(lastHighTemp);
+// 3.Write a function that accepts an array of numbers and returns true only if at least one number is
+//   negative and all numbers are less than 1000. Use some and every.
+const acceptNum = function (arr) {
+  if (arr.some((num) => num < 0) && arr.every((num) => num < 1000)) {
+    console.log("your num accepted");
+  }
+};
+checkNumbers([10, -5, 200, 999]); // true
+checkNumbers([10, 20, 30]); // false
+// 4.Create an array of objects (products with id and price). Use .findIndex() to find the position of
+//  the product with id = 105 and then remove it using splice.
+const products01 = [
+  { id: 101, price: 500 },
+  { id: 105, price: 1200 },
+  { id: 103, price: 800 },
 ];
+const index = products01.findIndex((p) => p.id === 105);
+if (index !== -1) {
+  products.splice(index, 1);
+}
+console.log(products01);
+// 5.Create a separate callback function called isLarge that checks if a value is greater than 500.
+//  Then use this same callback with .some(), .every(), and .find().
+const isLarge = function (value) {
+  return value > 500;
+};
+console.log(numsrand.some(isLarge)); //true
+console.log(numsrand.every(isLarge)); //false
+console.log(numsrand.find(isLarge)); //1290
+
+//Task-[B]->Real-world Tasks (Different Domains)
+// Task 1: Online Course Platform
+const students = [
+  { id: 1, name: "Sahaj", scores: [45, 67, 89, 30] },
+  { id: 2, name: "Teju", scores: [90, 92, 88, 95] },
+  { id: 3, name: "Arman", scores: [40, 35, 50, 28] },
+];
+// Write a function checkStudentPerformance(studentId) that:
+
+// Finds the student using .find()
+// Checks if the student has at least one failing score (< 40) using .some()
+// Checks if all scores are above 80 using .every()
+// Prints a clear message:
+// “Needs improvement” if any score is below 40
+// “Excellent student” if all scores > 80
+// Otherwise “Average performance”
+const checkStudentPerformance = function (stId) {
+  const currstudent = students.find((st) => st.id == stId);
+  if (!currstudent) {
+    console.log("Invalid ID");
+    return;
+  }
+
+  const hasFailing = currstudent.scores.some((score) => score < 40);
+  const allExcellent = currstudent.scores.every((score) => score > 80);
+
+  if (hasFailing) {
+    console.log("Needs improvement");
+  } else if (allExcellent) {
+    console.log("Excellent student");
+  } else {
+    console.log("Average performance");
+  }
+};
+checkStudentPerformance(1);
+checkStudentPerformance(2);
+checkStudentPerformance(3);
+
+// Task 2: Inventory ManagementJavaScript
+const products = [
+  { id: 101, name: "Laptop", stock: 5, price: 55000 },
+  { id: 102, name: "Mouse", stock: 0, price: 800 },
+  { id: 103, name: "Keyboard", stock: 12, price: 1500 },
+  { id: 104, name: "Monitor", stock: 3, price: 12000 },
+];
+// Write a function manageProduct(productId) that:
+
+// Finds the index of the product using .findIndex()
+// If the product exists and stock is 0 → remove it from the array using splice
+// If stock is greater than 0 → print “Product is available”
+// Also check if any product in the entire list has price > 10000 using .some()
+const manageProduct = function (productId) {
+  const index = products.findIndex((p) => p.id === productId);
+  if (index != -1) {
+    console.log("Invalid");
+    return;
+  }
+  const product = products[index];
+  if (product.stock === 0) {
+    products.splice(index, 1);
+    console.log("Product removed because stock is 0");
+  } else {
+    console.log("Product is available");
+  }
+  const hasExpensive = products.some((p) => p.price > 10000);
+  console.log("Any product above 10000?", hasExpensive);
+};
+manageProduct(102);
+manageProduct(104);

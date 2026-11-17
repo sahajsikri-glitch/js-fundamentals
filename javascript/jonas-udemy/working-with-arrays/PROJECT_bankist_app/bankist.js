@@ -225,6 +225,7 @@ btnClose.addEventListener("click", function (event) {
   }
 });
 
+// findlastindex method :
 btnLoan.addEventListener("click", function (e) {
   e.preventDefault();
   const amount = Number(inputLoanAmount.value);
@@ -234,8 +235,7 @@ btnLoan.addEventListener("click", function (e) {
     // uupdate UI
     containerApp.style.opacity = 0;
     inputLoanAmount.value = "";
-  }
-  else{
-    alert("NO LOAN GRANTED")
+  } else {
+    alert("NO LOAN GRANTED");
   }
 });
