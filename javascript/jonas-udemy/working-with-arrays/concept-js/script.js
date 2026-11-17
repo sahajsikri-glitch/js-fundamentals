@@ -159,3 +159,16 @@ console.log(totalDeposits2);
 // the find-method : -> returns first element that satisfies the condition
 const firstWithdrawl = movements.find((mov) => mov < 0);
 console.log(firstWithdrawl);
+
+//New findLast and findLastIndex method
+console.log(movements);
+const lastWithdrawl = movements.findLastIndex((mov) => mov < 0);
+console.log(lastWithdrawl);
+
+// challenge -> print 'your last largest movement was X movements ago .'
+const latestLargeMovementsIndex = movements.findLast(function (max) {
+  Math.abs(max) > 1000;
+});
+console.log(
+  `your last largest movement was ${movements.length - latestLargeMovementsIndex} ago`,
+);
