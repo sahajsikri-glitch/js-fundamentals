@@ -82,8 +82,8 @@ const movDescriptionn = movements.map(function (mov, i, arr) {
   }
 });
 console.log(movDescriptionn);
-// DIFFERENCE B/W MAP & FOREACH -> map creates an array instead of just printing values like foreach
 
+// DIFFERENCE B/W MAP & FOREACH -> map creates an array instead of just printing values like foreach
 // the Filter-Method ->filter-out with condition
 // way-01
 const deposits = movements.filter(function (mov) {
@@ -173,7 +173,7 @@ console.log(
   `your last largest movement was ${movements.length - latestLargeMovementsIndex} ago`,
 );
 
-// Sum and the Every method :
+// Some and the Every method :
 // if we use include stl function to check for EQUALITY : example -:
 movements.includes(-130);
 // SOME -> any satisfies?
